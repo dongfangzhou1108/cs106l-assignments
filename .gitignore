@@ -48,3 +48,7 @@ __pycache__/
 pyvenv.cfg
 .venv
 pip-selfcheck.json
+
+
+.cache
+build
