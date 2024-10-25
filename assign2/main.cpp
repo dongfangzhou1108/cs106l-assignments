@@ -1,4 +1,12 @@
 /*
+ * @Author: DFZ 18746061711@163.com
+ * @Date: 2024-10-21 18:31:38
+ * @LastEditors: DFZ 18746061711@163.com
+ * @LastEditTime: 2024-10-25 11:11:52
+ * @FilePath: /cs106l-assignments/assign2/main.cpp
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
+/*
  * CS106L Assignment 2: Marriage Pact
  * Created by Haven Whitney with modifications by Fabio Ibanez & Jacob Roberts-Baca.
  *
@@ -15,8 +23,9 @@
 #include <unordered_set>
 
 #include "utils.h"
+#include "assert.h"
 
-std::string kYourName = "STUDENT TODO"; // Don't forget to change this!
+std::string kYourName = "Fangzhou Dong"; // Don't forget to change this!
 
 /**
  * Takes in a file name and returns a set containing all of the applicant names as a set.
@@ -31,6 +40,16 @@ std::string kYourName = "STUDENT TODO"; // Don't forget to change this!
  */
 std::set<std::string> get_applicants(std::string filename) {
   // STUDENT TODO: Implement this function.
+	std::set<std::string> res{};
+	std::ifstream ifs{filename};
+	assert(ifs.is_open());
+	
+	std::string line;
+	while (std::getline(ifs, line)) {
+		res.insert(line);
+	}
+
+	return res;
 }
 
 /**
@@ -43,6 +62,14 @@ std::set<std::string> get_applicants(std::string filename) {
  */
 std::queue<const std::string*> find_matches(std::string name, std::set<std::string>& students) {
   // STUDENT TODO: Implement this function.
+	std::queue<const std::string*> res{};
+	for(auto& student : students) {
+		if(student.at(0) == name.at(0)) {
+			res.push(&student);
+		}
+	}
+
+	return res;
 }
 
 /**
@@ -57,6 +84,7 @@ std::queue<const std::string*> find_matches(std::string name, std::set<std::stri
  */
 std::string get_match(std::queue<const std::string*>& matches) {
   // STUDENT TODO: Implement this function.
+	return {"NO MATCHES FOUND."};
 }
 
 /* #### Please don't modify this call to the autograder! #### */
